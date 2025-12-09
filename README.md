@@ -94,8 +94,6 @@ npx playwright install
 Create a `.env` file in the root directory. This handles the Base URL and TestRail integration keys.
 
 ```
-BASE_URL=[https://careers.osapiens.com/](https://careers.osapiens.com/)
-
 # TestRail Configuration
 TESTRAIL_USERNAME=***REDACTED_EMAIL***
 TESTRAIL_API_KEY=***REDACTED_API_KEY***
