@@ -130,6 +130,16 @@ npx playwright show-report
 
 ---
 
+### ⏰ Scheduled CI Pipeline (Daily UTC Run)
+
+In addition to on-demand executions, the project is integrated into a **scheduled CI pipeline**:
+
+- The pipeline is triggered **every day at 05:00 UTC**.
+- The suite is executed in **headless mode** as part of the CI environment.
+- Upon completion, results are **automatically synchronized with TestRail**, updating the linked test run and associated cases.
+- This ensures a **daily heartbeat of the recruitment workflow**, enabling early detection of regressions and providing stakeholders with an up-to-date quality status.
+
+
 ## 🎩 Special Feature: DOM Injection
 
 As a demonstration of advanced browser control, the final step of the test utilizes `page.evaluate()` to inject JavaScript directly into the browser context.
