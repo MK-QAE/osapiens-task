@@ -93,10 +93,10 @@ npx playwright install
 ```
 
 ### 2. Environment Configuration
-Create a `.env` file in the root directory. This handles the Base URL and TestRail integration keys.
+Create a `.env` file in the root directory. This handles TestRail integration keys.
 
 ```
-# TestRail Configuration
+# TestRail Configuration 
 TESTRAIL_USERNAME=***REDACTED_EMAIL***
 TESTRAIL_API_KEY=***REDACTED_API_KEY***
 TESTRAIL_PROJECT_ID=3
