@@ -95,7 +95,12 @@ npx playwright install
 ### 2. Environment Configuration
 Create a `.env` file in the root directory. This handles TestRail integration keys.
 
+ Install **dotenv** to load environment variables from .env
+
+```bash
+npm install dotenv --save-dev
 ```
+
 # TestRail Configuration 
 TESTRAIL_USERNAME=***REDACTED_EMAIL***
 TESTRAIL_API_KEY=***REDACTED_API_KEY***
@@ -118,13 +123,13 @@ npx playwright test tests/osapiens.spec.ts --headed
 
 ### Run in Headless Mode (CI/CD)
 
-```bash
+```
 npx playwright test
 ```
 
 ### View Reports
 
-```bash
+```
 npx playwright show-report
 ```
 
