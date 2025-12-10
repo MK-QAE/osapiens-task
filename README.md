@@ -9,8 +9,8 @@
 | Attribute     | Details                                             |
 |---------------|-----------------------------------------------------|
 | **Candidate** | MK                                                  |
-| **Role** | Lead QA Engineer                                    |
-| **Focus** | Engineering Excellence, Stability & Resilience      |
+| **Role** | Lead QA Engineer                                         |
+| **Focus** | Engineering Excellence, Stability & Resilience          |
 | **Tech Stack**| Playwright (TypeScript)                             |
 
 ---
@@ -40,8 +40,10 @@ The project utilizes a scalable **Modular Page Object Model (POM)** structure to
 ├── pages/
 │   ├── BasePage.ts            # 🏗️ Parent Class: Generic logic, Health Monitors, & Wrappers
 │   └── OsapiensPage.ts        # 📄 Page Object: Specific Business Logic for Career Portal
+├── TestPlan/
+│   └── TestPlan.md            # 📘 Test Plan: Quality Guide and Strategy
 ├── tests/
-│   └── osapiens.spec.ts       # 🧪 Test Scenario: Clean, readable, and focused on workflow
+│   └── OsapiensTest.spec.ts   # 🧪 Test Scenario: Clean, readable, and focused on workflow
 ├── .env                       # 🔐 Configuration: API Keys & Secrets
 ├── playwright.config.ts       # ⚙️ Framework Configuration
 └── README.md                  # 📘 Documentation
@@ -100,7 +102,7 @@ TESTRAIL_API_KEY=***REDACTED_API_KEY***
 TESTRAIL_PROJECT_ID=3
 TESTRAIL_SUITE_ID=14
 TESTRAIL_RUN_ID=29
-TESTRAIL_HOST=[https://osapiensss.testrail.io/](https://osapiensss.testrail.io/)
+TESTRAIL_HOST=https://osapiensss.testrail.io/
 ```
 
 ---
