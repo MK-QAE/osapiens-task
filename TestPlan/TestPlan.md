@@ -20,18 +20,18 @@ Test planning must be **Risk-Based**. We prioritize scenarios based on impact (h
 
 These scenarios cover the core business purpose of the application.
 
-| **Scenario Category** | **Description** | **Rationale (Why Automate)** |
-| --- | --- | --- |
-| **P0: Core Journey** | Successful loading of the career page and listing of _any_ available jobs. | Failure means the recruitment process is completely blocked. |
-| --- | --- | --- |
-| **P1: Search & Filter** | Searching for a specific known role ("Quality", "Backend") returns correct, linked results. | Validates key discovery functionality and data integrity. |
-| --- | --- | --- |
-| **P2: Application Integrity** | Clicking the final "Apply" button successfully navigates to the external ATS/application form. | Validates the business goal (candidate conversion). |
-| --- | --- | --- |
-| **P3: Multi-Locale Support** | Switching languages (if applicable) and verifying core text elements (e.g., "View Jobs") update correctly. | Prevents bugs in international deployments. |
-| --- | --- | --- |
-| **P4: Session Resilience** | Test runs successfully, even with unexpected interruptions (e.g., cookie banners, chat widgets). | Validates the architecture's self-healing capabilities (using BasePage logic). |
-| --- | --- | --- |
+| **Scenario Category**         | **Description**                                                                                            | **Rationale (Why Automate)**                                                   |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **P0: Core Journey**          | Successful loading of the career page and listing of _any_ available jobs.                                 | Failure means the recruitment process is completely blocked.                   |
+| ---                           | ---                                                                                                        | ---                                                                            |
+| **P1: Search & Filter**       | Searching for a specific known role ("Quality", "Backend") returns correct, linked results.                | Validates key discovery functionality and data integrity.                      |
+| ---                           | ---                                                                                                        | ---                                                                            |
+| **P2: Application Integrity** | Clicking the final "Apply" button successfully navigates to the external ATS/application form.             | Validates the business goal (candidate conversion).                            |
+| ---                           | ---                                                                                                        | ---                                                                            |
+| **P3: Multi-Locale Support**  | Switching languages (if applicable) and verifying core text elements (e.g., "View Jobs") update correctly. | Prevents bugs in international deployments.                                    |
+| ---                           | ---                                                                                                        | ---                                                                            |
+| **P4: Session Resilience**    | Test runs successfully, even with unexpected interruptions (e.g., cookie banners, chat widgets).           | Validates the architecture's self-healing capabilities (using BasePage logic). |
+| ---                           | ---                                                                                                        | ---                                                                            |
 
 ### 2.2. Medium-Risk Scenarios (Automate with Integration/API)
 
@@ -46,67 +46,67 @@ Not everything should be automated in an E2E environment. We must optimize for *
 
 ### 3.1. What to Automate (High ROI)
 
-| **Criteria** | **Example Scenario** |
-| --- | --- |
-| **Repetitive** | Every nightly smoke test run. |
-| --- | --- |
-| **High Risk** | Core application flow (e.g., applying for a job). |
-| --- | --- |
-| **Data-Driven** | Verifying job listings from multiple sources/categories. |
-| --- | --- |
-| **Stable UI** | Elements that rarely change (e.g., navigation bar, footer links). |
-| --- | --- |
-| **Performance SLA** | Timing the critical search transaction speed. |
-| --- | --- |
+| **Criteria**        | **Example Scenario**                                              |
+| ------------------- | ----------------------------------------------------------------- |
+| **Repetitive**      | Every nightly smoke test run.                                     |
+| ---                 | ---                                                               |
+| **High Risk**       | Core application flow (e.g., applying for a job).                 |
+| ---                 | ---                                                               |
+| **Data-Driven**     | Verifying job listings from multiple sources/categories.          |
+| ---                 | ---                                                               |
+| **Stable UI**       | Elements that rarely change (e.g., navigation bar, footer links). |
+| ---                 | ---                                                               |
+| **Performance SLA** | Timing the critical search transaction speed.                     |
+| ---                 | ---                                                               |
 
 ### 3.2. What NOT to Automate (Low ROI / High Maintenance)
 
-| **Criteria** | **Rationale** | **Recommended Approach** |
-| --- | --- | --- |
-| **Third-Party Systems** | External payment portals, complex ATS forms, embedded external widgets (e.g., Google Maps). | Trust external vendor, use API stubs or mock services. |
-| --- | --- | --- |
-| **Visual/Aesthetic Changes** | Font size, minor color shifts, padding. | Use dedicated Visual Regression Tools (e.g., Percy, Applitools). |
-| --- | --- | --- |
-| **Exploratory Testing** | Creative, unscripted testing to find unknown bugs. | Must always be done manually by human QA/Product. |
-| --- | --- | --- |
-| **Anti-Bot Mechanisms** | CAPTCHAs, complex MFA steps. | Use test environment variables to disable or provide mock tokens. |
-| --- | --- | --- |
-| **Infrequently Changing UI** | Old admin dashboards, legacy pages that are rarely updated. | Manual checks (once per release) or low-priority unit/integration tests. |
-| --- | --- | --- |
+| **Criteria**                 | **Rationale**                                                                               | **Recommended Approach**                                                 |
+| ---------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| **Third-Party Systems**      | External payment portals, complex ATS forms, embedded external widgets (e.g., Google Maps). | Trust external vendor, use API stubs or mock services.                   |
+| ---                          | ---                                                                                         | ---                                                                      |
+| **Visual/Aesthetic Changes** | Font size, minor color shifts, padding.                                                     | Use dedicated Visual Regression Tools (e.g., Percy, Applitools).         |
+| ---                          | ---                                                                                         | ---                                                                      |
+| **Exploratory Testing**      | Creative, unscripted testing to find unknown bugs.                                          | Must always be done manually by human QA/Product.                        |
+| ---                          | ---                                                                                         | ---                                                                      |
+| **Anti-Bot Mechanisms**      | CAPTCHAs, complex MFA steps.                                                                | Use test environment variables to disable or provide mock tokens.        |
+| ---                          | ---                                                                                         | ---                                                                      |
+| **Infrequently Changing UI** | Old admin dashboards, legacy pages that are rarely updated.                                 | Manual checks (once per release) or low-priority unit/integration tests. |
+| ---                          | ---                                                                                         | ---                                                                      |
 
 ### 3.3. Integrating Non-Functional Testing (NFT)
 
 Non-Functional requirements are critical for user experience and platform security.
 
-| **NFT Area** | **Strategy** | **Tooling / Integration** |
-| --- | --- | --- |
-| **Performance** | Monitor page load times and transaction latency (SLOs) within the E2E framework itself. | Playwright timers, integrated metrics logging. |
-| --- | --- | --- |
-| **Security** | Implement basic security checks (e.g., preventing mixed content, validating security headers). | Simple HTTP request checks (Integration), or specialized security scanning tools. |
-| --- | --- | --- |
-| **Accessibility** | Run automated accessibility checks against critical pages (P0/P1) during E2E runs. | Playwright integration with axe-core to catch low-hanging fruit. |
-| --- | --- | --- |
+| **NFT Area**      | **Strategy**                                                                                   | **Tooling / Integration**                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Performance**   | Monitor page load times and transaction latency (SLOs) within the E2E framework itself.        | Playwright timers, integrated metrics logging.                                    |
+| ---               | ---                                                                                            | ---                                                                               |
+| **Security**      | Implement basic security checks (e.g., preventing mixed content, validating security headers). | Simple HTTP request checks (Integration), or specialized security scanning tools. |
+| ---               | ---                                                                                            | ---                                                                               |
+| **Accessibility** | Run automated accessibility checks against critical pages (P0/P1) during E2E runs.             | Playwright integration with axe-core to catch low-hanging fruit.                  |
+| ---               | ---                                                                                            | ---                                                                               |
 
 ## 4\. E2E Framework & Coding Best Practices
 
 The framework must prioritize **readability, resilience, and maintainability.**
 
-| **Area** | **Best Practice** | **Rationale** |
-| --- | --- | --- |
-| **Architecture** | **Strict Page Object Model (POM)**: Logic separated into pages, locators into constants, and test flows into specs. | Enforces DRY (Don't Repeat Yourself) and high maintainability. |
-| --- | --- | --- |
-| **Locators** | **Prioritize Resilience:** Use data-attributes (data-qa="job-card") or role-based locators (page.getByRole('button', { name: 'Apply' })). **Avoid:** Brittle CSS/XPath locators (div > div:nth-child(5)). | Ensures tests don't break when minor UI styling changes. |
-| --- | --- | --- |
-| **Waiting** | **Explicit Waiting Only:** Use Playwright's auto-waiting features and explicit waits (page.waitForURL(), locator.waitFor()). **Avoid:** Arbitrary hard waits (page.waitForTimeout(2000)). | Eliminates flakiness and speeds up execution. |
-| --- | --- | --- |
-| **Assertions** | **Soft Assertions for Monitoring:** Use expect.soft() for non-critical checks (like the Performance SLA breach warning) that shouldn't stop the entire test. Use **Hard Assertions** for critical flow failures. | Provides comprehensive feedback without blocking the pipeline unnecessarily. |
-| --- | --- | --- |
-| **Test Data** | **Isolation:** Never hardcode test data. Use fixtures or dynamic data generation (e.g., Faker.js, or dedicated test data services). | Ensures tests are repeatable and prevents dependency conflicts. |
-| --- | --- | --- |
-| **Error Handling** | **Proactive Health Checks:** Always capture and log console errors, network 4xx/5xx failures, and resource loading errors during the test session. | Detects "silent" errors that don't visibly break the UI but compromise the application's health. |
-| --- | --- | --- |
-| **Maintenance** | **Regular Refactoring:** Schedule recurring time (e.g., every sprint) to refactor technical debt, improve element locators, and delete obsolete tests. | Prevents test suite decay and high long-term maintenance costs. |
-| --- | --- | --- |
+| **Area**           | **Best Practice**                                                                                                                                                                                                | **Rationale**                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Architecture**   | **Strict Page Object Model (POM)**: Logic separated into pages, locators into constants, and test flows into specs.                                                                                              | Enforces DRY (Don't Repeat Yourself) and high maintainability.                                   |
+| ---                | ---                                                                                                                                                                                                              | ---                                                                                              |
+| **Locators**       | **Prioritize Resilience:** Use data-attributes (data-qa="job-card") or role-based locators (page.getByRole('button', { name: 'Apply' })). **Avoid:** Brittle CSS/XPath locators (div > div:nth-child(5)).        | Ensures tests don't break when minor UI styling changes.                                         |
+| ---                | ---                                                                                                                                                                                                              | ---                                                                                              |
+| **Waiting**        | **Explicit Waiting Only:** Use Playwright's auto-waiting features and explicit waits (page.waitForURL(), locator.waitFor()). **Avoid:** Arbitrary hard waits (page.waitForTimeout(2000)).                        | Eliminates flakiness and speeds up execution.                                                    |
+| ---                | ---                                                                                                                                                                                                              | ---                                                                                              |
+| **Assertions**     | **Soft Assertions for Monitoring:** Use expect.soft() for non-critical checks (like the Performance SLA breach warning) that shouldn't stop the entire test. Use **Hard Assertions** for critical flow failures. | Provides comprehensive feedback without blocking the pipeline unnecessarily.                     |
+| ---                | ---                                                                                                                                                                                                              | ---                                                                                              |
+| **Test Data**      | **Isolation:** Never hardcode test data. Use fixtures or dynamic data generation (e.g., Faker.js, or dedicated test data services).                                                                              | Ensures tests are repeatable and prevents dependency conflicts.                                  |
+| ---                | ---                                                                                                                                                                                                              | ---                                                                                              |
+| **Error Handling** | **Proactive Health Checks:** Always capture and log console errors, network 4xx/5xx failures, and resource loading errors during the test session.                                                               | Detects "silent" errors that don't visibly break the UI but compromise the application's health. |
+| ---                | ---                                                                                                                                                                                                              | ---                                                                                              |
+| **Maintenance**    | **Regular Refactoring:** Schedule recurring time (e.g., every sprint) to refactor technical debt, improve element locators, and delete obsolete tests.                                                           | Prevents test suite decay and high long-term maintenance costs.                                  |
+| ---                | ---                                                                                                                                                                                                              | ---                                                                                              |
 
 ## 5\. Execution and Reporting Best Practices (CI/CD)
 
@@ -173,15 +173,15 @@ Quality is a shared responsibility (**"Quality is everyone's job"**).
 
 To stay ahead, we must continuously evolve our tools and skills.
 
-| **Initiative** | **Objective** | **Projected Timeline** |
-| --- | --- | --- |
-| **Visual Regression (VR)** | Automate detection of unintended visual changes (Layout, style, component breakage). | Q1 Next Year |
-| --- | --- | --- |
-| **Synthetic Monitoring** | Deploy production "canary" tests (using Playwright/Lighthouse) to run from external geographic locations. | Q2 Next Year |
-| --- | --- | --- |
-| **AI-Powered Testing** | Explore AI tools for generating test data, self-healing locators, or summarizing bug reports. | Q3 Next Year |
-| --- | --- | --- |
-| **Skills Matrix** | Implement a skills matrix to track and improve team expertise in TypeScript, advanced Playwright features, and CI/CD pipelines. | Ongoing |
-| --- | --- | --- |
+| **Initiative**             | **Objective**                                                                                                                   | **Projected Timeline** |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| **Visual Regression (VR)** | Automate detection of unintended visual changes (Layout, style, component breakage).                                            | Q1 Next Year           |
+| ---                        | ---                                                                                                                             | ---                    |
+| **Synthetic Monitoring**   | Deploy production "canary" tests (using Playwright/Lighthouse) to run from external geographic locations.                       | Q2 Next Year           |
+| ---                        | ---                                                                                                                             | ---                    |
+| **AI-Powered Testing**     | Explore AI tools for generating test data, self-healing locators, or summarizing bug reports.                                   | Q3 Next Year           |
+| ---                        | ---                                                                                                                             | ---                    |
+| **Skills Matrix**          | Implement a skills matrix to track and improve team expertise in TypeScript, advanced Playwright features, and CI/CD pipelines. | Ongoing                |
+| ---                        | ---                                                                                                                             | ---                    |
 
 This plan demonstrates the strategic depth required to lead a QA team, ensuring the focus is on scalable architecture and proactive quality, not just test case writing.

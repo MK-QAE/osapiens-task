@@ -2,7 +2,10 @@
   "name": "osapiens-qa-task",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "format": "npx prettier --write ."},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,6 +14,7 @@
     "@playwright/test": "^1.57.0",
     "@types/node": "^24.10.1",
     "dotenv": "^17.2.3",
-    "playwright-testrail-reporter": "^1.3.3"
+    "playwright-testrail-reporter": "^1.3.3",
+    "prettier": "^3.7.4"
   }
 }
