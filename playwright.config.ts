@@ -10,8 +10,8 @@ const BASE_URL = OSAPIENS_LOCATORS.URLS.BASE_PROD;
 
 // Shared reporter list
 const reporters: ReporterDescription[] = [
-  ['list'],  // Print test results to the console
-  ['html'],  // Generate standard HTML report (for GitHub artifacts / local debugging)
+  ['list'], // Print test results to the console
+  ['html'], // Generate standard HTML report (for GitHub artifacts / local debugging)
 ];
 
 // Add TestRail reporter only on CI
