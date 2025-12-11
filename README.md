@@ -44,6 +44,7 @@ The project utilizes a scalable **Modular Page Object Model (POM)** structure to
 │   └── TestPlan.md            # 📘 Test Plan: Quality Guide and Strategy
 ├── tests/
 │   └── OsapiensTest.spec.ts   # 🧪 Test Scenario: Clean, readable, and focused on workflow
+├── .prettierrc                # 🌟 Code Formatting
 ├── .env                       # 🔐 Configuration: API Keys & Secrets
 ├── playwright.config.ts       # ⚙️ Framework Configuration
 └── README.md                  # 📘 Documentation
